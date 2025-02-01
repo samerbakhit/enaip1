@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Utente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+ 
+    <div class="container mt-5">
+       <h1 th:text="${#strings.isEmpty(studente.matricola) ? 'Crea Nuovo Studente' : 'Modifica Studente'}"></h1>
+
+        <form th:action="@{/Enaip/Studenti/save}" th:object="${studente}" method="post">
+         <!-- Campo nascosto per l'ID -->
+		  <div class="mb-3">
+               
+                <input type="hidden" class="form-control"  id="matricola" th:field="${studente.matricola}" readonly>
+              
+            </div>
+            <!-- Nome Utente -->
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control"  id="nome" th:field="${studente.nome}" placeholder="Inserisci nome studente">
+                <div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Errore nel campo</div>
+                <!-- Mostra il messaggio di errore per il nome utente -->    
+            </div>
+             <div class="mb-3">
+                <label for="nome" class="form-label">Cognome</label>
+                <input type="text" class="form-control" id="cognome" th:field="*{cognome}" placeholder="Inserisci cognome studente">
+              <div class="text-danger" th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}">Errore nel campo</div>
+               
+            </div>
+
+                  <div class="mb-3">
+                <label for="cell" class="form-label">cell</label>
+                <input type="text" class="form-control" id="cell" th:field="*{cell}" placeholder="Inserisci il numero di telefono">
+              <div class="text-danger" th:if="${#fields.hasErrors('cell')}" th:errors="*{cell}">Errore nel campo</div>
+                
+            </div>
+           
+                  <div class="mb-3">
+                <label for="nome" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Inserisci l'email ">
+               <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Errore nel campo</div>
+               
+            </div>
+            
+ 
+
+            <!-- Pulsanti -->
+            <button type="submit" class="btn btn-success">Salva</button>
+            <a href="/Enaip/Studenti/listaStudenti" class="btn btn-secondary">Annulla</a>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (opzionale) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

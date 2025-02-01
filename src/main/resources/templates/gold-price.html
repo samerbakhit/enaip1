@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gold Price</title>
+</head>
+<body>
+    <h1>Gold Price</h1>
+    <p>From Currency: <span th:text="${goldPrice.fromCurrencyCode}"></span></p>
+    <p>To Currency: <span th:text="${goldPrice.toCurrencyCode}"></span></p>
+    <p>Exchange Rate: <span th:text="${goldPrice.exchangeRate}"></span></p>
+    <p>Last Refreshed: <span th:text="${goldPrice.lastRefreshed}"></span></p>
+    <p>Time Zone: <span th:text="${goldPrice.timeZone}"></span></p>
+</body>
+</html>
